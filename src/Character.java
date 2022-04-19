@@ -67,12 +67,12 @@ public class Character {
 	@Override
 	public String toString() {
 		String explicacion1 = "Tu personaje se llama " + nombre + ", con " + avatar.getVida() + " pt de vida, "
-				+ "con un arma " + arma.getNombre() + " sumas " + arma.getDanyo() + " al daño que te hagan sea positivo o negativo, \n";
+				+ "con un arma " + arma.getNombre() + " sumas " + arma.getDanyo() + " al daÃ±o que te hagan sea positivo o negativo, \n";
 		String explicacion2 = "";
-		if(poder.getDano_defensa()>0) {
+		if(poder.getDano_defensa() > 0) {
 			explicacion2 = "posees " + poder.getNombre() + ", este poder te aporta " + poder.getDano_defensa() + " de vida en cada ronda."; 
 		} else {
-			explicacion2 = "posees " + poder.getNombre() + ", este poder resta " + poder.getDano_defensa() + " del daño que te hagan."; 
+			explicacion2 = "posees " + poder.getNombre() + ", este poder resta " + poder.getDano_defensa() + " del daÃ±o que te hagan."; 
 		}
 		
 		return explicacion1 + explicacion2;

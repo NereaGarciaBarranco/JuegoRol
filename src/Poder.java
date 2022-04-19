@@ -35,11 +35,11 @@ public class Poder {
 		return dano_defensa;
 	}
 	
-	public void setDaño_defensa(int dano_defensa) {
+	public void setDano_defensa(int dano_defensa) {
 		this.dano_defensa = dano_defensa;
 	}
 	
 	public String toString() {
-		return "Nombre: " + nombre + " Daño/defensa: " + dano_defensa;
+		return "Nombre: " + nombre + " DaÃ±o/defensa: " + dano_defensa;
 	}
 }

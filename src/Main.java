@@ -38,7 +38,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// Mostramos el mensaje de comienzo de juego
-		System.out.println("¡Bienvenido al juego de rol!");
+		System.out.println("Â¡Bienvenido al juego de rol!");
 		// Con este bucle permitimos al usuario elegir lo que quiere hacer
 		while (true) {
 			mostrarMenu();
@@ -55,10 +55,10 @@ public class Main {
 				} else if (respuesta == 4) {
 					break;
 				} else {
-					System.out.println("¡Introduce una opcion correcta, por favor!");
+					System.out.println("Introduce una opcion correcta, Â¡por favor!");
 				}
 			} catch (InputMismatchException e) {
-				System.out.println("¡Introduce un numero, por favor!");
+				System.out.println("Introduce un numero, Â¡por favor!");
 			}
 		}
 	}
@@ -79,7 +79,7 @@ public class Main {
 	 * Pre: ---
 	 * Post: Este metodo obtiene de la BD todos los datos necesarios
 	 * para poder jugar o ver el ranking. Se ejecuta cada vez que el
-	 * usuario elige una opcion del menu por si ha añadido algun
+	 * usuario elige una opcion del menu por si ha aÃ±adido algun
 	 * registro nuevo en la anterior interaccion con el programa, ya 
 	 * sea una nueva idea o una nueva posicion en el ranking. 
 	 */
@@ -114,7 +114,7 @@ public class Main {
 			int idAvatar = rs.getInt(1);
 			String nombre = rs.getString(2);
 			int vida = rs.getInt(3);
-			// Creamos un objeto de tipo Avatar con estos datos y lo añadimos a su lista
+			// Creamos un objeto de tipo Avatar con estos datos y lo aÃ±adimos a su lista
 			avatares.add(new Avatar(idAvatar, nombre, vida));
 		}
 		// Cerramos la conexion con la BD
@@ -141,7 +141,7 @@ public class Main {
 			int idArma = rs.getInt(1);
 			String nombre = rs.getString(2);
 			int dano = rs.getInt(3);
-			// Creamos un objeto de tipo Arma con estos datos y lo añadimos a su lista
+			// Creamos un objeto de tipo Arma con estos datos y lo aÃ±adimos a su lista
 			armas.add(new Arma(idArma, nombre, dano));
 		}
 		// Cerramos la conexion con la BD
@@ -168,7 +168,7 @@ public class Main {
 			int idPoder = rs.getInt(1);
 			String nombre = rs.getString(2);
 			int danoDefensa = rs.getInt(3);
-			// Creamos un objeto de tipo Poder con estos datos y lo añadimos a su lista
+			// Creamos un objeto de tipo Poder con estos datos y lo aÃ±adimos a su lista
 			poderes.add(new Poder(idPoder, nombre, danoDefensa));
 		}
 		// Cerramos la conexion con la BD
@@ -206,7 +206,7 @@ public class Main {
 			Avatar avatar = findAvatarById(idAvatar);
 			Arma arma = findArmaById(idArma);
 			Poder poder = findPoderById(idPoder);
-			// Creamos un objeto de tipo Character con estos datos y lo añadimos a su lista
+			// Creamos un objeto de tipo Character con estos datos y lo aÃ±adimos a su lista
 			Character character = new Character(idCharacter, nombre, avatar, arma, poder);
 			characters.add(character);		
 		}
@@ -279,7 +279,7 @@ public class Main {
 			String textoConsecuencia2 = rs.getString(4);
 			int valorConsecuencia1 = rs.getInt(5);
 			int valorConsecuencia2 = rs.getInt(6);
-			// Creamos un objeto de tipo Pregunta con estos datos y lo añadimos a su lista
+			// Creamos un objeto de tipo Pregunta con estos datos y lo aÃ±adimos a su lista
 			preguntas.add(new Pregunta(texto, textoConsecuencia1, textoConsecuencia2, 
 					valorConsecuencia1, valorConsecuencia2));
 		}
@@ -381,11 +381,11 @@ public class Main {
 				System.out.println("La pregunta con texto: '" + pregunta.getTexto() + "' ha sido insertada.");
 			} // Si introduce un numero incorrecto salta una advertencia 
 			else {
-				System.out.println("¡Introduce una opcion correcta, por favor!");
+				System.out.println("Â¡Introduce una opcion correcta, Â¡por favor!");
 			}
 		// Si no introduce un numero salta una advertencia
 		} catch (InputMismatchException e) {
-			System.out.println("¡Introduce un numero, por favor!");
+			System.out.println("Introduce un numero correcto, Â¡por favor!");
 		} catch (Exception e) { e.printStackTrace();}
 	}
 	
@@ -406,13 +406,13 @@ public class Main {
 		while (true) {
 			String vida = entrada.nextLine();
 			/*
-			 * El daño del arma debe ser un numero positivo y ademas no ser
+			 * El daï¿½o del arma debe ser un numero positivo y ademas no ser
 			 * mayor de 50 para que no se rompa el equilibrio del juego.
 			 */
 			if (isInteger(vida) && Integer.parseInt (vida) > 0) {
 				return new Avatar (nombre, Integer.parseInt(vida));
 			} else {
-				System.out.println("¡Introduce un numero correcto, por favor!");
+				System.out.println("Introduce un numero correcto, Â¡por favor!");
 			}
 		}
 	}
@@ -442,18 +442,18 @@ public class Main {
 		// Pedimos el nombre del Arma
 		System.out.println("Introduce el nombre del arma:");
 		String nombre = entrada.nextLine();
-		// Pedimos el daño y hacemos las comprobaciones necesarias
-		System.out.println("Introduce el daño del arma (numero entero entre 0 y 50):");
+		// Pedimos el daï¿½o y hacemos las comprobaciones necesarias
+		System.out.println("Introduce el daÃ±o del arma (numero entero entre 0 y 50):");
 		while (true) {
 			String dano = entrada.nextLine();
 			/*
-			 * El daño del arma debe ser un numero positivo y ademas no ser
+			 * El daï¿½o del arma debe ser un numero positivo y ademas no ser
 			 * mayor de 50 para que no se rompa el equilibrio del juego.
 			 */
 			if (isInteger(dano) && Integer.parseInt (dano) > 0 && Integer.parseInt(dano) < 50) {
 				return new Arma (nombre,Integer.parseInt(dano));
 			} else {
-				System.out.println("¡Introduce un numero correcto, por favor!");
+				System.out.println("Introduce un numero correcto, Â¡por favor!");
 			}
 		}
 	}
@@ -498,12 +498,12 @@ public class Main {
 		System.out.println("Introduce el nombre del poder:");
 		String nombre = entrada.nextLine();
 		System.out.println(
-				"Introduce el daño (numero entero positivo entre 0 y 50) " 
+				"Introduce el daÃ±o (numero entero positivo entre 0 y 50) " 
 						+ "o defensa (numero entero negativo hasta -50) del poder:");
 		while (true) {
 			String danoDefensa = entrada.nextLine();
 			/*
-			 * El daño o defensa del poder debe ser un numero positivo y 
+			 * El daï¿½o o defensa del poder debe ser un numero positivo y 
 			 * ademas no ser mayor de 50 ni menor de  -50 para que no se 
 			 * rompa el equilibrio del juego.
 			 */
@@ -511,7 +511,7 @@ public class Main {
 					&& Integer.parseInt(danoDefensa) < 50) {
 				return new Poder (nombre, Integer.parseInt(danoDefensa));
 			} else {
-				System.out.println("¡Introduce un numero correcto, por favor!");
+				System.out.println("Introduce un numero, Â¡por favor!");
 			}
 		}
 	}
@@ -555,7 +555,7 @@ public class Main {
 				valorConsecuencia1 = entrada.nextInt();
 				valor1Introducido = true;
 			} catch (InputMismatchException e) {
-				System.out.println("¡Introduce un numero, por favor!");
+				System.out.println("Introduce un numero, Â¡por favor!");
 			}
 		}
 		entrada.nextLine();
@@ -568,7 +568,7 @@ public class Main {
 				return new Pregunta(texto, consecuencia1, consecuencia2, 
 						valorConsecuencia1, valorConsecuencia2);
 			} catch (InputMismatchException e) {
-				System.out.println("¡Introduce un numero, por favor!");
+				System.out.println("Introduce un numero, Â¡por favor!");
 			}
 		}
 	}
@@ -602,7 +602,7 @@ public class Main {
 	private static void jugar(){
 		// Si hay characters guardados en base de datos
 		if(!characters.isEmpty()) {
-			System.out.println("¿Quieres utilizar un character existente? si/no");
+			System.out.println("Â¿Quieres utilizar un character existente? si / no");
 			entrada.nextLine();
 			while(true) {	
 				String respuesta = entrada.nextLine();
@@ -613,7 +613,7 @@ public class Main {
 				} else if (respuesta.equalsIgnoreCase("no")) {
 					break;
 				} else {
-					System.out.println("¡Introduce una respuesta correcta!");
+					System.out.println("Introduce una respuesta correcta");
 				}
 			}
 		}
@@ -729,9 +729,9 @@ public class Main {
 		// Mostramos por pantalla el Character elegido.
 		System.out.println(character.toString());
 		/*
-		 * El arma es defensa, su daño se resta al daño que te hacen
+		 * El arma es defensa, su daï¿½o se resta al daï¿½o que te hacen
 		 * El poder si es positivo te cura cada ronda y si es negativo 
-		 * se resta al daño que te hacen
+		 * se resta al daÃ±o que te hacen
 		 */
 		Arma arma = character.getArma();
 		Poder poder = character.getPoder();
@@ -751,19 +751,19 @@ public class Main {
 				// y calculamos la vida actual
 				valorTotal = calcularValorConsecuencia(respuesta, arma, poder, pregunta, poderDefensivo);
 				/*
-				 *  Le añadimos al character el valor que se le suma o resta a su vida 
+				 *  Le aï¿½adimos al character el valor que se le suma o resta a su vida 
 				 *  tras calcularlo con el metodo anterior.
 				 */
 				character.getAvatar().setVida(character.getAvatar().getVida() + valorTotal);
 				nPregunta++;
-				// Si ademas el poder es curativo añadimos los puntos de vida correspondientes
+				// Si ademas el poder es curativo aÃ±adimos los puntos de vida correspondientes
 				if (poderCurativo) {
 					character.getAvatar().setVida(character.getAvatar().getVida() + poder.getDano_defensa());
 					System.out.println("Tu poder curativo te restaura " + poder.getDano_defensa() + " puntos de vida.");
 				}			
 				System.out.println("Vida actual: " + character.getAvatar().getVida());
 			} else {
-				System.out.println("¡Introduce una opcion correcta, por favor!");
+				System.out.println("Â¡Introduce una opcion correcta, Â¡por favor!");
 			}
 			// Si el personaje muere preguntamos si quiere guardar en ranking 
 			if(character.getAvatar().getVida() <= 0) {
@@ -805,17 +805,17 @@ public class Main {
 		 * porque te curara un poco en esa ronda.
 		 */
 		if (pierdesVida) { 
-			System.out.println("Esta accion te quita " + valorConsecuencia + " puntos de vida.");
+			System.out.println("Esta accion te quita " + Math.abs(valorConsecuencia) + " puntos de vida.");
 			if (poderDefensivo) {
 				/*
 				 * El arma se suma porque es un numero positivo pero el poder se resta
 				 * porque es un numero negativo.
 				 */
 				valorTotal = valorConsecuencia + arma.getDanyo() - poder.getDano_defensa();
-				System.out.println("Gracias a tu arma y tu poder solo te quitan " + valorTotal + " puntos de vida.");
+				System.out.println("Gracias a tu arma y tu poder solo te quitan " + Math.abs(valorTotal) + " puntos de vida.");
 			} else {
 				valorTotal = valorConsecuencia + arma.getDanyo();
-				System.out.println("Gracias a tu arma solo te quitan " + valorTotal + " puntos de vida.");
+				System.out.println("Gracias a tu arma solo te quitan " + Math.abs(valorTotal) + " puntos de vida.");
 			}
 		} 
 		// Si la consecuencia te suma vida, el arma no tiene efecto. 
@@ -844,7 +844,7 @@ public class Main {
 			} else if (opcion.equalsIgnoreCase("no")) {
 				break;
 			} else {
-				System.out.println("¡Introduce una opcion correcta, por favor!");
+				System.out.println("Introduce una opcion correcta, Â¡por favor!");
 			}
 		}
 	}

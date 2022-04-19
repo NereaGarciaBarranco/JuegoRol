@@ -2,17 +2,17 @@
 public class Arma {
 	private int idArma;
 	private String nombre;
-	private int daño;
+	private int dano;
 
-	public Arma (int idArma, String nombre, int daño) {
+	public Arma (int idArma, String nombre, int dano) {
 		this.idArma = idArma;
 		this.nombre = nombre;
-		this.daño = daño;
+		this.dano = dano;
 	}
 	
-	public Arma (String nombre, int daño) {
+	public Arma (String nombre, int dano) {
 		this.nombre = nombre;
-		this.daño = daño;
+		this.dano = dano;
 	}
 	
 	public int getIdArma() {
@@ -32,14 +32,14 @@ public class Arma {
 	}
 	
 	public int getDanyo() {
-		return daño;
+		return dano;
 	}
 	
-	public void setDanyo(int daño) {
-		this.daño = daño;
+	public void setDanyo(int dano) {
+		this.dano = dano;
 	}
 	
 	public String toString () {
-		return "Nombre: " + nombre + " Daño: " + daño;
+		return "Nombre: " + nombre + " DaÃ±o: " + dano;
 	}
 }
