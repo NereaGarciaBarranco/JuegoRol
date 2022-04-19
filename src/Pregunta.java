@@ -7,6 +7,18 @@ public class Pregunta {
 	private int valorConsecuencia1;
 	private int valorConsecuencia2;
 	
+	// Constructor con identificador para leer de la BD
+	public Pregunta (int idPregunta, String texto, String textoConsecuencia1, String textoConsecuencia2,
+			int valorConsecuencia1, int valorConsecuencia2) {
+		this.idPregunta = idPregunta;
+		this.texto = texto;
+		this.textoConsecuencia1 = textoConsecuencia1;
+		this.textoConsecuencia2 = textoConsecuencia2;
+		this.valorConsecuencia1 = valorConsecuencia1;
+		this.valorConsecuencia2 = valorConsecuencia2;
+	}
+	
+	// Constructor sin identificador para insercion de Preguntas
 	public Pregunta (String texto, String textoConsecuencia1, String textoConsecuencia2,
 			int valorConsecuencia1, int valorConsecuencia2) {
 		this.texto = texto;

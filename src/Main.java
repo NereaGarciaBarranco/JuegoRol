@@ -280,7 +280,7 @@ public class Main {
 			int valorConsecuencia1 = rs.getInt(5);
 			int valorConsecuencia2 = rs.getInt(6);
 			// Creamos un objeto de tipo Pregunta con estos datos y lo añadimos a su lista
-			preguntas.add(new Pregunta(texto, textoConsecuencia1, textoConsecuencia2, 
+			preguntas.add(new Pregunta(idPregunta, texto, textoConsecuencia1, textoConsecuencia2, 
 					valorConsecuencia1, valorConsecuencia2));
 		}
 		// Cerramos la conexion con la BD
