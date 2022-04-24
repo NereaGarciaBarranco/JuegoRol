@@ -12,7 +12,7 @@ public class SQLConnection {
 	// Datos que necesitamos para conectar con la BD
 	final private String host = "localhost:3306/juegorol";
 	final private String user = "root";
-	final private String passwd = "1234";
+	final private String passwd = "sgz7MHM8@";
 	
 	/**
 	 * Pre: ---

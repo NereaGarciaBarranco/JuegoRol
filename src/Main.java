@@ -106,7 +106,7 @@ public class Main {
 		conexion.conectarBD();
 		// Obtenemos con un select todos los avatares
 		PreparedStatement preparedStatement = conexion.getConnect().prepareStatement
-				("select * from avatar");
+				("select * from juegorol.avatar");
 		ResultSet rs = preparedStatement.executeQuery();
 		// Mientras queden registros por leer
 		while (rs.next()) {
@@ -133,7 +133,7 @@ public class Main {
 		conexion.conectarBD();
 		// Obtenemos con un select todas las armas
 		PreparedStatement preparedStatement = conexion.getConnect().prepareStatement
-				("select * from arma");
+				("select * from juegorol.arma");
 		ResultSet rs = preparedStatement.executeQuery();
 		// Mientras queden registros por leer
 		while (rs.next()) {
@@ -160,7 +160,7 @@ public class Main {
 		conexion.conectarBD();
 		// Obtenemos con un select todas los poderes
 		PreparedStatement preparedStatement = conexion.getConnect().prepareStatement
-				("select * from poder");
+				("select * from juegorol.poder");
 		ResultSet rs = preparedStatement.executeQuery();
 		// Mientras queden registros por leer
 		while (rs.next()) {
@@ -220,7 +220,7 @@ public class Main {
 	 * segun su identificador pasado por parametro. 
 	 */
 	private static Avatar findAvatarById(int idAvatar) {		
-		for(int i = 0; i<avatares.size(); i++) {
+		for(int i = 0; i < avatares.size(); i++) {
 			if(avatares.get(i).getIdAvatar() == idAvatar) {
 				return avatares.get(i);
 			}
@@ -268,7 +268,7 @@ public class Main {
 		conexion.conectarBD();
 		// Obtenemos con un select todas las preguntas
 		PreparedStatement preparedStatement = conexion.getConnect().prepareStatement
-				("select * from pregunta");
+				("select * from juegorol.pregunta");
 		ResultSet rs = preparedStatement.executeQuery();
 		// Mientras queden registros por leer
 		while (rs.next()) {
@@ -299,7 +299,7 @@ public class Main {
 		conexion.conectarBD();
 		// Obtenemos con un select los 10 registros del Ranking con mas rondas
 		PreparedStatement preparedStatement = conexion.getConnect().prepareStatement
-				("select * from ranking order by rondas desc limit 10");
+				("select * from juegorol.ranking order by rondas desc limit 10");
 		ResultSet rs = preparedStatement.executeQuery();
 		// Mientras queden registros por leer
 		while (rs.next()) {
@@ -378,7 +378,8 @@ public class Main {
 			} else if (respuesta == 4) {
 				Pregunta pregunta = pedirDatosPregunta();
 				insertarPregunta(pregunta);
-				System.out.println("La pregunta con texto: '" + pregunta.getTexto() + "' ha sido insertada.");
+				System.out.println("La pregunta con texto: '" + pregunta.getTexto() 
+					+ "' ha sido insertada.");
 			} // Si introduce un numero incorrecto salta una advertencia 
 			else {
 				System.out.println("¡Introduce una opcion correcta, ¡por favor!");
@@ -395,8 +396,6 @@ public class Main {
 	 * para poder formar un objeto de tipo Avatar.
 	 */
 	private static Avatar pedirDatosAvatar() {
-		// Hay que poner esto por lo que dicen aqui:
-		// https://es.stackoverflow.com/questions/22395/scanner-nextline-no-act%c3%baa-correctamente-despu%c3%a9s-de-scanner-nextint
 		entrada.nextLine();
 		// Pedimos el nombre del Avatar
 		System.out.println("Introduce el nombre del avatar:");
@@ -405,10 +404,7 @@ public class Main {
 		// Comprobamos que la vida que ha introducido el usuario es un numero
 		while (true) {
 			String vida = entrada.nextLine();
-			/*
-			 * El da�o del arma debe ser un numero positivo y ademas no ser
-			 * mayor de 50 para que no se rompa el equilibrio del juego.
-			 */
+			// La vida debe ser un numero positivo
 			if (isInteger(vida) && Integer.parseInt (vida) > 0) {
 				return new Avatar (nombre, Integer.parseInt(vida));
 			} else {
@@ -447,7 +443,7 @@ public class Main {
 		while (true) {
 			String dano = entrada.nextLine();
 			/*
-			 * El da�o del arma debe ser un numero positivo y ademas no ser
+			 * El daño del arma debe ser un numero positivo y ademas no ser
 			 * mayor de 50 para que no se rompa el equilibrio del juego.
 			 */
 			if (isInteger(dano) && Integer.parseInt (dano) > 0 && Integer.parseInt(dano) < 50) {
@@ -498,12 +494,12 @@ public class Main {
 		System.out.println("Introduce el nombre del poder:");
 		String nombre = entrada.nextLine();
 		System.out.println(
-				"Introduce el daño (numero entero positivo entre 0 y 50) " 
-						+ "o defensa (numero entero negativo hasta -50) del poder:");
+				"Introduce el daño (numero entero negativo entre 0 y 50) " 
+						+ "o defensa (numero entero positivo hasta -50) del poder:");
 		while (true) {
 			String danoDefensa = entrada.nextLine();
 			/*
-			 * El da�o o defensa del poder debe ser un numero positivo y 
+			 * El daño o defensa del poder debe ser un numero positivo y 
 			 * ademas no ser mayor de 50 ni menor de  -50 para que no se 
 			 * rompa el equilibrio del juego.
 			 */
@@ -661,6 +657,8 @@ public class Main {
 		Arma arma = armas.get(respuestaArma);
 		// Despues se elige el poder (mediante un numero)
 		System.out.println("Elige el poder de tu nuevo character:");
+		System.out.println("Si el numero es positivo te cura en cada ronda.");
+		System.out.println("Si es negativo te haran menos daño cuando pierdas vida.");
 		for(int i = 0; i < poderes.size(); i++) {
 			System.out.println("["+i+"] " + poderes.get(i).toString());
 		}
@@ -729,9 +727,9 @@ public class Main {
 		// Mostramos por pantalla el Character elegido.
 		System.out.println(character.toString());
 		/*
-		 * El arma es defensa, su da�o se resta al da�o que te hacen
+		 * El arma es defensa, su daño se resta al daño que te hacen
 		 * El poder si es positivo te cura cada ronda y si es negativo 
-		 * se resta al daño que te hacen
+		 * se resta al daño que te hacen.
 		 */
 		Arma arma = character.getArma();
 		Poder poder = character.getPoder();
@@ -751,15 +749,17 @@ public class Main {
 				// y calculamos la vida actual
 				valorTotal = calcularValorConsecuencia(respuesta, arma, poder, pregunta, poderDefensivo);
 				/*
-				 *  Le a�adimos al character el valor que se le suma o resta a su vida 
+				 *  Le añadimos al character el valor que se le suma o resta a su vida 
 				 *  tras calcularlo con el metodo anterior.
 				 */
 				character.getAvatar().setVida(character.getAvatar().getVida() + valorTotal);
 				nPregunta++;
 				// Si ademas el poder es curativo añadimos los puntos de vida correspondientes
 				if (poderCurativo) {
-					character.getAvatar().setVida(character.getAvatar().getVida() + poder.getDano_defensa());
-					System.out.println("Tu poder curativo te restaura " + poder.getDano_defensa() + " puntos de vida.");
+					character.getAvatar().setVida(character.getAvatar().getVida() 
+							+ poder.getDano_defensa());
+					System.out.println("Tu poder curativo te restaura " + poder.getDano_defensa() 
+						+ " puntos de vida.");
 				}			
 				System.out.println("Vida actual: " + character.getAvatar().getVida());
 			} else {
@@ -805,17 +805,20 @@ public class Main {
 		 * porque te curara un poco en esa ronda.
 		 */
 		if (pierdesVida) { 
-			System.out.println("Esta accion te quita " + Math.abs(valorConsecuencia) + " puntos de vida.");
+			System.out.println("Esta accion te quita " + Math.abs(valorConsecuencia) 
+				+ " puntos de vida.");
 			if (poderDefensivo) {
 				/*
 				 * El arma se suma porque es un numero positivo pero el poder se resta
 				 * porque es un numero negativo.
 				 */
 				valorTotal = valorConsecuencia + arma.getDanyo() - poder.getDano_defensa();
-				System.out.println("Gracias a tu arma y tu poder solo te quitan " + Math.abs(valorTotal) + " puntos de vida.");
+				System.out.println("Gracias a tu arma y tu poder solo te quitan " + Math.abs(valorTotal) 
+					+ " puntos de vida.");
 			} else {
 				valorTotal = valorConsecuencia + arma.getDanyo();
-				System.out.println("Gracias a tu arma solo te quitan " + Math.abs(valorTotal) + " puntos de vida.");
+				System.out.println("Gracias a tu arma solo te quitan " + Math.abs(valorTotal) 
+					+ " puntos de vida.");
 			}
 		} 
 		// Si la consecuencia te suma vida, el arma no tiene efecto. 
